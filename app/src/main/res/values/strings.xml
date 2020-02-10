@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Conversor</string>
+    <array name="menu1">
+        <item>Km</item>
+        <item>m</item>
+        <item>dm</item>
+        <item>cm</item>
+        <item>mm</item>
+    </array>
+</resources>
