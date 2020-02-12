@@ -7,4 +7,6 @@
         <item>cm</item>
         <item>mm</item>
     </array>
+    <string name="hint">Introduzca una cantidad</string>
+    <string name="convertText">Convertir</string>
 </resources>

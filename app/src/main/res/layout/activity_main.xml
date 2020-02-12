@@ -8,9 +8,10 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Introduzca una cantidad"
+            android:hint="@string/hint"
             android:inputType="numberDecimal" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -21,7 +22,7 @@
         android:orientation="horizontal">
 
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/spinner1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -29,7 +30,7 @@
             android:spinnerMode="dropdown" />
 
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/spinner2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -42,6 +43,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Convertir" />
+        android:text="@string/convertText" />
+
+    <EditText
+        android:id="@+id/outText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
 
 </LinearLayout>
