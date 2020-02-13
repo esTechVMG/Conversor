@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case 4:
             }
-            double multiplier = getMultiplier();
+            //double multiplier = getMultiplier();
 
         }catch (Exception e){
             Log.e("CONVERSOR","UNHANDLED EXCEPTION CONVERTING");
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     public double getMultiplier(int times){
         boolean toUpOrDown=times>0;
-
+        int num=1;
         for(int a=0;a!=Math.abs(times);){
          if(toUpOrDown){
              num*=0.1;

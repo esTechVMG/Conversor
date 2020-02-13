@@ -9,4 +9,5 @@
     </array>
     <string name="hint">Introduzca una cantidad</string>
     <string name="convertText">Convertir</string>
+    <string name="send">Enviar</string>
 </resources>
