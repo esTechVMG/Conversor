@@ -2,12 +2,14 @@ package com.example.conversor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -31,7 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         out=findViewById(R.id.outText);
         convert.setOnClickListener(this);
     }
-
+    boolean canSend=false;
+    public double oldValue,newValue;
+    public String oldType,newType;
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -39,12 +43,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(input.getText().toString().isEmpty()){
                     input.setText("0");
                 }
+                oldType=convertFrom.getSelectedItem().toString();
+                oldValue=Double.parseDouble(input.getText().toString());
+                newType=convertTo.getSelectedItem().toString();
+                newValue=Double.parseDouble(input.getText().toString());
                 out.setText(getResult() + convertTo.getSelectedItem().toString());
+                canSend=true;
+                break;
+            case R.id.send:
+                if(canSend){
+                    Intent intent=new Intent(this,SendToActivity.class);
+                    intent.putExtra("OldValue",oldValue);
+                    intent.putExtra("OldType",oldType);
+                    intent.putExtra("NewValue",newValue);
+                    intent.putExtra("NewType",newType);
+                Log.d("send" ,"SENDING INTENT");
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(this, "This is my Toast message!",Toast.LENGTH_LONG).show();
+                }
                 break;
         }
     }
     public double getResult(){
-        double result=Integer.valueOf(input.getText().toString());
+        double result=Integer.parseInt(input.getText().toString());
         double numOne=getMultiply(convertFrom.getSelectedItemPosition());
         double numTwo=getDivide(convertTo.getSelectedItemPosition());
         return result*numOne*numTwo;
@@ -89,17 +111,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 return 0;
         }
-    }
-    public double getMeterMultiplier(int times){
-        boolean toUpOrDown=times>0;
-        int num=1;
-        for(int a=0;a!=Math.abs(times);){
-         if(toUpOrDown){
-             num*=0.1;
-         }else{
-             num*=10;
-         }
-     }
-     return num;
     }
 }

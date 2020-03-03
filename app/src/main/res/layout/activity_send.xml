@@ -15,4 +15,10 @@
     <TimePicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></TimePicker>
+
+    <Button
+        android:id="@+id/sendEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send" />
 </LinearLayout>

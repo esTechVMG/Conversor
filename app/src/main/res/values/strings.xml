@@ -18,6 +18,7 @@
         <item>millas nauticas</item>
         <item>brazas</item>
     </array>
+    <string name="out">Resultado</string>
     <string name="hint">Introduzca una cantidad</string>
     <string name="convertText">Convertir</string>
     <string name="send">Enviar</string>
