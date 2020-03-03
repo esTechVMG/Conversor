@@ -6,6 +6,17 @@
         <item>dm</item>
         <item>cm</item>
         <item>mm</item>
+        <item>leguas</item>
+        <item>millas</item>
+        <item>estadios</item>
+        <item>cadenas</item>
+        <item>barras</item>
+        <item>yardas</item>
+        <item>pies</item>
+        <item>manos</item>
+        <item>pulgadas</item>
+        <item>millas nauticas</item>
+        <item>brazas</item>
     </array>
     <string name="hint">Introduzca una cantidad</string>
     <string name="convertText">Convertir</string>
