@@ -14,9 +14,9 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity{
 
-    public Button convert;
+    public Button convert,send;
     public EditText out;
     public TextInputEditText input;
     public Spinner convertFrom,convertTo;
@@ -26,20 +26,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setContentView(R.layout.activity_main);
 
+        send=findViewById(R.id.send);
         input=findViewById(R.id.input);
         convertFrom=findViewById(R.id.spinner1);
         convertTo=findViewById(R.id.spinner2);
         convert=findViewById(R.id.convertButton);
         out=findViewById(R.id.outText);
-        convert.setOnClickListener(this);
-    }
-    boolean canSend=false;
-    public double oldValue,newValue;
-    public String oldType,newType;
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.convertButton:
+        convert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 if(input.getText().toString().isEmpty()){
                     input.setText("0");
                 }
@@ -49,22 +44,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 newValue=Double.parseDouble(input.getText().toString());
                 out.setText(getResult() + convertTo.getSelectedItem().toString());
                 canSend=true;
-                break;
-            case R.id.send:
+            }
+        });
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 if(canSend){
-                    Intent intent=new Intent(this,SendToActivity.class);
+                    Intent intent=new Intent(MainActivity.this,SendToActivity.class);
                     intent.putExtra("OldValue",oldValue);
                     intent.putExtra("OldType",oldType);
                     intent.putExtra("NewValue",newValue);
                     intent.putExtra("NewType",newType);
-                Log.d("send" ,"SENDING INTENT");
+                    Log.d("send" ,"SENDING INTENT");
                     startActivity(intent);
                 }else{
-                    Toast.makeText(this, "This is my Toast message!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "This is my Toast message!",Toast.LENGTH_LONG).show();
                 }
-                break;
-        }
+            }
+        });
     }
+    boolean canSend=false;
+    public double oldValue,newValue;
+    public String oldType,newType;
     public double getResult(){
         double result=Integer.parseInt(input.getText().toString());
         double numOne=getMultiply(convertFrom.getSelectedItemPosition());
