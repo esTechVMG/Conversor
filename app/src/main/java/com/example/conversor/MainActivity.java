@@ -35,15 +35,14 @@ public class MainActivity extends AppCompatActivity{
         convert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(input.getText().toString().isEmpty()){
-                    input.setText("0");
+                if(!input.getText().toString().isEmpty()){
+                    oldType=convertFrom.getSelectedItem().toString();
+                    oldValue=Double.parseDouble(input.getText().toString());
+                    newType=convertTo.getSelectedItem().toString();
+                    newValue=getResult();
+                    out.setText(newValue + convertTo.getSelectedItem().toString());
+                    canSend=true;
                 }
-                oldType=convertFrom.getSelectedItem().toString();
-                oldValue=Double.parseDouble(input.getText().toString());
-                newType=convertTo.getSelectedItem().toString();
-                newValue=Double.parseDouble(input.getText().toString());
-                out.setText(getResult() + convertTo.getSelectedItem().toString());
-                canSend=true;
             }
         });
         send.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity{
     public double oldValue,newValue;
     public String oldType,newType;
     public double getResult(){
-        double result=Integer.parseInt(input.getText().toString());
+        double result=Double.parseDouble(input.getText().toString());
         double numOne=getMultiply(convertFrom.getSelectedItemPosition());
         double numTwo=getDivide(convertTo.getSelectedItemPosition());
         return result*numOne*numTwo;
