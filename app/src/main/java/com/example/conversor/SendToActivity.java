@@ -34,7 +34,7 @@ public class SendToActivity extends AppCompatActivity {
                 intent.putExtra(Intent.EXTRA_EMAIL,emailsList);
                 intent.putExtra(Intent.EXTRA_SUBJECT,"Conversion");
                 String outTime;
-                if(android.os.Build.VERSION.SDK_INT>=26){
+                if(android.os.Build.VERSION.SDK_INT>=23){
                     outTime=time.getHour() + ":" + time.getMinute();
                 }else{
                     outTime=time.getCurrentHour() + ":" + time.getCurrentMinute();
