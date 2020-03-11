@@ -55,10 +55,9 @@ public class MainActivity extends AppCompatActivity{
                     intent.putExtra("OldType",oldType);
                     intent.putExtra("NewValue",newValue);
                     intent.putExtra("NewType",newType);
-                    Log.d("send" ,"SENDING INTENT");
                     startActivity(intent);
                 }else{
-                    Toast.makeText(MainActivity.this, "This is my Toast message!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Haga una conversion primero por favor",Toast.LENGTH_LONG).show();
                 }
             }
         });
